@@ -2,6 +2,10 @@ html {
   font-family: sans-serif;
 }
 
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 table {
   border-collapse: collapse;
   border: 2px solid rgb(200,200,200);
