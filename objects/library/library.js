@@ -8,6 +8,9 @@ function Book (title, author, n_pages, read) {
     this.info = function () {
         return `${title} by ${author}, ${n_pages} pages, ${read}`
     };
+    this.toggleRead = function () {
+        this.read === "read" ? this.read = "not_read" : this.read = "read";
+    }
 };
 
 function addBookToLibrary (title, author, n_pages, read) {
@@ -43,6 +46,7 @@ function createCard (book, bookIndex) {
     readBtn.textContent = book["read"];
 
     addDeleteBook(deleteBtn);
+    addToggleRead(readBtn);
 
     newBook.appendChild(deleteBtn);
     newBook.appendChild(title);
@@ -99,7 +103,7 @@ addBookDataBtn.addEventListener("click", (event) => {
 
 // Functions handling book deletion
 function deleteBook(bookCard) {
-    const bookToDeleteIndex= bookCard.book_index;
+    const bookToDeleteIndex= bookCard.getAttribute("book_index");
     myLibrary.splice(bookToDeleteIndex, 1);
     
     const cards = document.querySelector(".books");
@@ -117,3 +121,12 @@ function addDeleteBook (button) {
 
 const deleteBtns = document.querySelectorAll(".deleteBtn");
 deleteBtns.forEach(button => addDeleteBook(button));
+
+// Functions handling the toggling of read/notread
+function addToggleRead (button) {
+    button.addEventListener("click", function(event) {
+        const bookCard = event.target.parentElement;
+        const bookIndex = bookCard.getAttribute("book_index");
+        myLibrary[bookIndex].toggleRead();
+    })
+}
