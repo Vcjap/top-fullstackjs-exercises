@@ -36,6 +36,27 @@ html{
     background-color: var(--book-background-not-read);
 }
 
+.readBtn {
+    border:none;
+    border-radius: 5px;
+}
+
+.book.read .readBtn {
+    background-color: var(--book-background-not-read);
+}
+
+.book.not_read .readBtn {
+    background-color: var(--book-background-read);
+}
+
+.book .title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.book .author {
+    font-style: italic;
+}
 
 
 .deleteBtn {
@@ -45,6 +66,7 @@ html{
     background-color: var(--deleteBtn-background);
     color: white;
 }
+
 
 form {
     display: flex;

@@ -42,7 +42,7 @@ function createCard (book, bookIndex) {
     deleteBtn.textContent = "X";
     title.textContent = book["title"];
     author.textContent = book["author"];
-    pages.textContent = book["pages"];
+    pages.textContent = `${book["pages"]} pages`;
     readBtn.textContent = book["read"];
 
     addDeleteBook(deleteBtn);
