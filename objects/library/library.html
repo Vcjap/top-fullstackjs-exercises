@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Welcome to the Library</h1>
-    <button class = "addBook"> Add new book</button>
+    <button class = "addBook" id ="addBookDialogBtn"> Add new book</button>
     <dialog>
-        <form id="addBookDialog">
+        <form id="addBookForm">
             <h3>Add New Book</h3>
             <div class="formOption">
                 <label for="title">Title</label>
@@ -22,18 +22,18 @@
             </div>
             <div class="formOption">
                 <label for="pages">Number of pages</label>
-                <input type="number" name = "pages" id="pages" required>
+                <input type="number" name = "pages" id="pages" required min="1" max="99999">
             </div>
             <div class="formOption">
                 <label for="read">Read?</label>
-                <select name = "read"  required>
+                <select name = "read" required>
                     <option value = "read">Read</option>
                     <option value = "not_read" selected>Not Read</option>
                 </select>
             </div>
         </form>
         <div class = "dialogButtons">
-            <button class = "addBook" type="submit" form="addBookDialog">Add Book</button>
+            <button class = "addBook" id="addBookDataBtn">Add Book</button>
             <button class = "closeBtn">Cancel</button>    
         </div>
     </dialog>

@@ -54,12 +54,28 @@ function displayBooks (library) {
 // Dialog and form 
 const addBookDialog = document.querySelector("dialog");
 
-const addBookButton = document.querySelector(".addBook");
+const addBookButton = document.querySelector("#addBookDialogBtn");
 addBookButton.addEventListener("click", () => {
     addBookDialog.showModal();
 })
 
 const closeBtn = document.querySelector(".closeBtn");
 closeBtn.addEventListener("click", () => {
+    addBookDialog.close();
+})
+
+// The submit button updates the library and the display, rests the form and closes the dialog
+const addBookDataBtn = document.querySelector("#addBookDataBtn")
+addBookDataBtn.addEventListener("click", (event) => {
+    const title = document.querySelector(".formOption #title").value;
+    const author = document.querySelector(".formOption #author").value;
+    const pages = document.querySelector(".formOption #pages").value;
+    const read = document.querySelector(".formOption select[name='read']").value;
+
+    addBookToLibrary(title, author, pages, read);
+    displayBooks([myLibrary[myLibrary.length -1]]);
+
+    const addBookForm = document.querySelector("#addBookForm");
+    addBookForm.reset();
     addBookDialog.close();
 })
