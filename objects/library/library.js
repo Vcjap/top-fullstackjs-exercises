@@ -26,20 +26,26 @@ function createCard (book, bookIndex) {
 
     const newBook = document.createElement("div");
     newBook.classList.add("book");
-    newBook.setAttribute("bookIndex", bookIndex);
+    newBook.setAttribute("book_index", bookIndex);
 
     const title = document.createElement("p");
     const author = document.createElement("p");
     const pages = document.createElement("p");
+    const deleteBtn = document.createElement("button");
 
     title.classList.add("title");
     author.classList.add("author");
     pages.classList.add("pages");
+    deleteBtn.classList.add("deleteBtn");
 
     title.textContent = book["title"];
     author.textContent = book["author"];
     pages.textContent = book["pages"];
+    deleteBtn.textContent = "X";
 
+    addDeleteBook(deleteBtn);
+
+    newBook.appendChild(deleteBtn);
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
@@ -85,3 +91,25 @@ addBookDataBtn.addEventListener("click", (event) => {
     addBookForm.reset();
     addBookDialog.close();
 })
+
+
+// Functions handling book deletion
+function deleteBook(bookCard) {
+    const bookToDeleteIndex= bookCard.book_index;
+    myLibrary.splice(bookToDeleteIndex, 1);
+    
+    const cards = document.querySelector(".books");
+    cards.removeChild(bookCard);
+
+    return
+}
+
+function addDeleteBook (button) {
+    button.addEventListener("click", function(event) {
+        const bookCard = event.target.parentElement;
+        deleteBook(bookCard);
+    });
+};
+
+const deleteBtns = document.querySelectorAll(".deleteBtn");
+deleteBtns.forEach(button => addDeleteBook(button));
