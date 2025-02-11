@@ -23,20 +23,23 @@ function createCard (book, bookIndex) {
     newBook.classList.add("book");
     newBook.setAttribute("book_index", bookIndex);
 
+    const deleteBtn = document.createElement("button");
     const title = document.createElement("p");
     const author = document.createElement("p");
     const pages = document.createElement("p");
-    const deleteBtn = document.createElement("button");
+    const readBtn = document.createElement("button");
 
+    deleteBtn.classList.add("deleteBtn");
     title.classList.add("title");
     author.classList.add("author");
     pages.classList.add("pages");
-    deleteBtn.classList.add("deleteBtn");
+    readBtn.classList.add("readBtn");
 
+    deleteBtn.textContent = "X";
     title.textContent = book["title"];
     author.textContent = book["author"];
     pages.textContent = book["pages"];
-    deleteBtn.textContent = "X";
+    readBtn.textContent = book["read"];
 
     addDeleteBook(deleteBtn);
 
@@ -44,6 +47,7 @@ function createCard (book, bookIndex) {
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
+    newBook.appendChild(readBtn);
 
     display.appendChild(newBook);
 
