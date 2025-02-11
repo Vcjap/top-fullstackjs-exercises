@@ -1,5 +1,12 @@
 html{
     --book-background: rgb(55, 255, 232);
+    --modal-background: rgb(38, 70, 249);
+}
+
+/* Used to style the window background when the modal is open*/
+::backdrop { 
+    background-color: var(--modal-background);
+    opacity: 0.7;
 }
 
 .books {
@@ -18,4 +25,34 @@ html{
     align-items: flex-start;
     padding: 5px 10px;
     max-width: 200px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dialogButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+input {
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 3px;
+    outline: none;
+}
+
+input:invalid {
+    border-color: rgb(241, 3, 3);
+}
+
+input:valid {
+    border-color: rgb(0, 206, 0);
+}
+
+label {
+    margin-right: 5px;
 }
