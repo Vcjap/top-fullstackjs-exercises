@@ -18,3 +18,35 @@ function addBookToLibrary (title, author, n_pages, read) {
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
 addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "read");
 
+
+
+function createCard (book) {
+    const newBook = document.createElement("div");
+    newBook.classList.add("book");
+    const title = document.createElement("p");
+    const author = document.createElement("p");
+    const pages = document.createElement("p");
+
+    title.classList.add("title");
+    author.classList.add("author");
+    pages.classList.add("pages");
+
+    title.textContent = book["title"];
+    author.textContent = book["author"];
+    pages.textContent = book["pages"];
+
+    newBook.appendChild(title);
+    newBook.appendChild(author);
+    newBook.appendChild(pages);
+
+    return newBook;
+}
+
+function displayBooks (library) {
+    const display = document.querySelector(".books");
+    library.forEach(book => {
+        const newBook = createCard(book);
+        display.appendChild(newBook);
+    })
+}
+
