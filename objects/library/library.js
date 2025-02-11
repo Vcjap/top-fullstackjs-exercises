@@ -13,6 +13,7 @@ function Book (title, author, n_pages, read) {
 function addBookToLibrary (title, author, n_pages, read) {
     const newBook = new Book(title, author, n_pages, read);
     myLibrary.push(newBook);
+    return newBook;
 };
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
@@ -20,9 +21,13 @@ addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
 
 
 
-function createCard (book) {
+function createCard (book, bookIndex) {
+    const display = document.querySelector(".books");
+
     const newBook = document.createElement("div");
     newBook.classList.add("book");
+    newBook.setAttribute("bookIndex", bookIndex);
+
     const title = document.createElement("p");
     const author = document.createElement("p");
     const pages = document.createElement("p");
@@ -39,14 +44,14 @@ function createCard (book) {
     newBook.appendChild(author);
     newBook.appendChild(pages);
 
-    return newBook;
+    display.appendChild(newBook);
+
+    return;
 }
 
 function displayBooks (library) {
-    const display = document.querySelector(".books");
-    library.forEach(book => {
-        const newBook = createCard(book);
-        display.appendChild(newBook);
+    library.forEach((book, index) => { 
+        createCard(book, index);
     })
 }
 
@@ -72,8 +77,9 @@ addBookDataBtn.addEventListener("click", (event) => {
     const pages = document.querySelector(".formOption #pages").value;
     const read = document.querySelector(".formOption select[name='read']").value;
 
-    addBookToLibrary(title, author, pages, read);
-    displayBooks([myLibrary[myLibrary.length -1]]);
+    const newBook = addBookToLibrary(title, author, pages, read);
+    const lastBookIndex = myLibrary.length -1;
+    createCard(newBook, lastBookIndex);
 
     const addBookForm = document.querySelector("#addBookForm");
     addBookForm.reset();
