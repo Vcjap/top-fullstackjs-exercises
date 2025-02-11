@@ -16,11 +16,6 @@ function addBookToLibrary (title, author, n_pages, read) {
     return newBook;
 };
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
-
-
-
 function createCard (book, bookIndex) {
     const display = document.querySelector(".books");
 
@@ -61,6 +56,10 @@ function displayBooks (library) {
     })
 }
 
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
+addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
+displayBooks(myLibrary);
 
 // Dialog and form 
 const addBookDialog = document.querySelector("dialog");
