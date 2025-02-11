@@ -21,6 +21,7 @@ function createCard (book, bookIndex) {
 
     const newBook = document.createElement("div");
     newBook.classList.add("book");
+    newBook.classList.add(book["read"]);
     newBook.setAttribute("book_index", bookIndex);
 
     const deleteBtn = document.createElement("button");

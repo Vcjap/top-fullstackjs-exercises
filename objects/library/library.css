@@ -1,5 +1,6 @@
 html{
-    --book-background: rgb(55, 255, 232);
+    --book-background-not-read: rgb(55, 255, 165);
+    --book-background-read: rgb(201, 133, 38);
     --modal-background: rgb(38, 70, 249);
     --deleteBtn-background: rgb(255, 0, 0);
 }
@@ -19,7 +20,6 @@ html{
 }
 
 .book {
-    background-color: var(--book-background);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -27,6 +27,16 @@ html{
     padding: 10px 20px;
     max-width: 200px;
 }
+
+.book.read {
+    background-color: var(--book-background-read);
+}
+
+.book.not_read {
+    background-color: var(--book-background-not-read);
+}
+
+
 
 .deleteBtn {
     align-self: flex-end;
