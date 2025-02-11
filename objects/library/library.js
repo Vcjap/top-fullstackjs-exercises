@@ -16,7 +16,7 @@ function addBookToLibrary (title, author, n_pages, read) {
 };
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "read");
+addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
 
 
 
@@ -50,3 +50,16 @@ function displayBooks (library) {
     })
 }
 
+
+// Dialog and form 
+const addBookDialog = document.querySelector("dialog");
+
+const addBookButton = document.querySelector(".addBook");
+addBookButton.addEventListener("click", () => {
+    addBookDialog.showModal();
+})
+
+const closeBtn = document.querySelector(".closeBtn");
+closeBtn.addEventListener("click", () => {
+    addBookDialog.close();
+})
