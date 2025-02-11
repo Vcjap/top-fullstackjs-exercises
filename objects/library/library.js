@@ -128,5 +128,9 @@ function addToggleRead (button) {
         const bookCard = event.target.parentElement;
         const bookIndex = bookCard.getAttribute("book_index");
         myLibrary[bookIndex].toggleRead();
+
+        event.target.textContent = myLibrary[bookIndex].read;
+        bookCard.classList.toggle("read");
+        bookCard.classList.toggle("not_read");
     })
 }
