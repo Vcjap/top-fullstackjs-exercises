@@ -75,64 +75,6 @@ const myLibrary = new Library([]);
 myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read"));
 myLibrary.displayBooks();
 
-// function addBookToLibrary (title, author, n_pages, read) {
-//     const newBook = new Book(title, author, n_pages, read);
-//     myLibrary.push(newBook);
-//     return newBook;
-// };
-
-// function createCard (book, bookIndex) {
-//     const display = document.querySelector(".books");
-
-//     const newBook = document.createElement("div");
-//     newBook.classList.add("book");
-//     newBook.classList.add(book["read"]);
-//     newBook.setAttribute("book_index", bookIndex);
-
-//     const deleteBtn = document.createElement("button");
-//     const title = document.createElement("p");
-//     const author = document.createElement("p");
-//     const pages = document.createElement("p");
-//     const readBtn = document.createElement("button");
-
-//     deleteBtn.classList.add("deleteBtn");
-//     title.classList.add("title");
-//     author.classList.add("author");
-//     pages.classList.add("pages");
-//     readBtn.classList.add("readBtn");
-
-//     deleteBtn.textContent = "X";
-//     title.textContent = book["title"];
-//     author.textContent = book["author"];
-//     pages.textContent = `${book["pages"]} pages`;
-//     readBtn.textContent = book["read"];
-
-//     addDeleteBook(deleteBtn);
-//     addToggleRead(readBtn);
-
-//     newBook.appendChild(deleteBtn);
-//     newBook.appendChild(title);
-//     newBook.appendChild(author);
-//     newBook.appendChild(pages);
-//     newBook.appendChild(readBtn);
-
-//     display.appendChild(newBook);
-
-//     return;
-// }
-
-// function displayBooks (library) {
-//     library.forEach((book, index) => { 
-//         createCard(book, index);
-//     })
-// }
-
-
-// addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
-// addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
-// displayBooks(myLibrary);
-
-
 
 // Dialog and form 
 const addBookDialog = document.querySelector("dialog");
