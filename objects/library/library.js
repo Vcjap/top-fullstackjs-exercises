@@ -70,18 +70,38 @@ class Library {
 }
 
 class Dialog {
+    // Adds event listeners to the dialog buttons and to add new book
     constructor() {
         const addBookDialog = document.querySelector("dialog");
-        const addBookButton = document.querySelector("#addBookDialogBtn");
 
+        const addBookButton = document.querySelector("#addBookDialogBtn");
         addBookButton.addEventListener("click", () => {
             addBookDialog.showModal();
-        })
+        });
 
         const closeBtn = document.querySelector(".closeBtn");
         closeBtn.addEventListener("click", () => {
             addBookDialog.close();
-        })
+        });
+        
+        // The submit button updates the library and the display, resets the form and closes the dialog
+        const addBookDataBtn = document.querySelector("#addBookDataBtn");
+        addBookDataBtn.addEventListener("click", (event) => {
+            const title = document.querySelector(".formOption #title").value;
+            const author = document.querySelector(".formOption #author").value;
+            const pages = document.querySelector(".formOption #pages").value;
+            const read = document.querySelector(".formOption select[name='read']").value;
+        
+            const newBook = new Book(title,author,pages,read);
+            myLibrary.addBookToLibrary(newBook);
+            const lastBookIndex = myLibrary.length -1;
+            myLibrary.createCard(newBook, lastBookIndex);
+
+            const addBookForm = document.querySelector("#addBookForm");
+            addBookForm.reset();
+            addBookDialog.close();        
+        });
+
     }
 }
 
@@ -90,25 +110,6 @@ const myLibrary = new Library([]);
 
 myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read"));
 myLibrary.displayBooks();
-
-// The submit button updates the library and the display, resets the form and closes the dialog
-const addBookDataBtn = document.querySelector("#addBookDataBtn")
-addBookDataBtn.addEventListener("click", (event) => {
-    const title = document.querySelector(".formOption #title").value;
-    const author = document.querySelector(".formOption #author").value;
-    const pages = document.querySelector(".formOption #pages").value;
-    const read = document.querySelector(".formOption select[name='read']").value;
-
-    const newBook = new Book(title,author,pages,read);
-    myLibrary.addBookToLibrary(newBook);
-    const lastBookIndex = myLibrary.length -1;
-    createCard(newBook, lastBookIndex);
-
-    const addBookForm = document.querySelector("#addBookForm");
-    addBookForm.reset();
-    addBookDialog.close();
-})
-
 
 // Functions handling book deletion
 function deleteBook(bookCard) {
