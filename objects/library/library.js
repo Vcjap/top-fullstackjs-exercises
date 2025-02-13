@@ -31,7 +31,7 @@ class Library {
         })
     }
 
-    deleteBook(bookCard) {
+    #deleteBook(bookCard) {
         const bookToDeleteIndex= bookCard.getAttribute("book_index");
         this.books.splice(bookToDeleteIndex, 1);
         
@@ -68,7 +68,7 @@ class Library {
         readBtn.textContent = book["read"];
         
         deleteBtn.addEventListener("click", () => {
-            this.deleteBook(newBookCard);
+            this.#deleteBook(newBookCard);
         })
 
         readBtn.addEventListener("click", () => {
