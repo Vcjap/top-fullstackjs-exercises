@@ -26,7 +26,7 @@ class Library {
     }
 
     displayBooks() {
-        this.books.forEach((book,index) => {
+        this.books.forEach((book, index) => {
             this.createCard(book, index);
         })
     }
@@ -71,6 +71,13 @@ class Library {
             this.deleteBook(newBookCard);
         })
 
+        readBtn.addEventListener("click", () => {
+            this.books[bookIndex].toggleRead();
+            readBtn.textContent = this.books[bookIndex].read;
+            newBookCard.classList.toggle("read");
+            newBookCard.classList.toggle("not_read");    
+        })
+
         const bookInfo = [deleteBtn, title, author, pages, readBtn];
         bookInfo.forEach((info) => {
             newBookCard.appendChild(info);
@@ -108,7 +115,7 @@ class Dialog {
         
             const newBook = new Book(title,author,pages,read);
             myLibrary.addBookToLibrary(newBook);
-            const lastBookIndex = myLibrary.length -1;
+            const lastBookIndex = myLibrary.books.length -1;
             myLibrary.createCard(newBook, lastBookIndex);
 
             const addBookForm = document.querySelector("#addBookForm");
@@ -126,14 +133,14 @@ myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read
 myLibrary.displayBooks();
 
 // Functions handling the toggling of read/notread
-function addToggleRead (button) {
-    button.addEventListener("click", function(event) {
-        const bookCard = event.target.parentElement;
-        const bookIndex = bookCard.getAttribute("book_index");
-        myLibrary[bookIndex].toggleRead();
+// function addToggleRead (button) {
+//     button.addEventListener("click", function(event) {
+//         const bookCard = event.target.parentElement;
+//         const bookIndex = bookCard.getAttribute("book_index");
+//         myLibrary[bookIndex].toggleRead();
 
-        event.target.textContent = myLibrary[bookIndex].read;
-        bookCard.classList.toggle("read");
-        bookCard.classList.toggle("not_read");
-    })
-}
+//         event.target.textContent = myLibrary[bookIndex].read;
+//         bookCard.classList.toggle("read");
+//         bookCard.classList.toggle("not_read");
+//     })
+// }
