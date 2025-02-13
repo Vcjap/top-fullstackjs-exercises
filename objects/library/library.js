@@ -1,17 +1,21 @@
 const myLibrary = [];
 
-function Book (title, author, n_pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = n_pages;
-    this.read = read;
-    this.info = function () {
+class Book {
+    constructor(title, author, n_pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = n_pages;
+        this.read = read;    
+    }
+
+    info() {
         return `${title} by ${author}, ${n_pages} pages, ${read}`
-    };
-    this.toggleRead = function () {
+    }
+
+    toggleRead() {
         this.read === "read" ? this.read = "not_read" : this.read = "read";
     }
-};
+}
 
 function addBookToLibrary (title, author, n_pages, read) {
     const newBook = new Book(title, author, n_pages, read);
@@ -83,7 +87,7 @@ closeBtn.addEventListener("click", () => {
     addBookDialog.close();
 })
 
-// The submit button updates the library and the display, rests the form and closes the dialog
+// The submit button updates the library and the display, resets the form and closes the dialog
 const addBookDataBtn = document.querySelector("#addBookDataBtn")
 addBookDataBtn.addEventListener("click", (event) => {
     const title = document.querySelector(".formOption #title").value;
