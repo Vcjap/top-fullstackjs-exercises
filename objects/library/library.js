@@ -1,4 +1,3 @@
-
 class Book {
     constructor(title, author, n_pages, read) {
         this.title = title;
@@ -7,7 +6,7 @@ class Book {
         this.read = read;    
     }
 
-    info() {
+    info() { 
         return `${title} by ${author}, ${n_pages} pages, ${read}`
     }
 
@@ -25,10 +24,56 @@ class Library {
         this.books.push(newBook);
         return newBook;
     }
+
+    displayBooks() {
+        this.books.forEach((book,index) => {
+            this.createCard(book, index);
+        })
+    }
+
+    createCard(book, bookIndex) {
+        const display = document.querySelector(".books");
+
+        const newBookCard = document.createElement("div");
+        newBookCard.classList.add("book");
+        newBookCard.classList.add(book["read"]);
+        newBookCard.setAttribute("book_index", bookIndex);
+        
+        const deleteBtn = document.createElement("button");
+        const title = document.createElement("p");
+        const author = document.createElement("p");
+        const pages = document.createElement("p");
+        const readBtn = document.createElement("button");
+        
+        deleteBtn.classList.add("deleteBtn");
+        title.classList.add("title");
+        author.classList.add("author");
+        pages.classList.add("pages");
+        readBtn.classList.add("readBtn");
+    
+        deleteBtn.textContent = "X";
+        title.textContent = book["title"];
+        author.textContent = book["author"];
+        pages.textContent = `${book["pages"]} pages`;
+        readBtn.textContent = book["read"];
+        
+        newBookCard.appendChild(deleteBtn);
+        newBookCard.appendChild(title);
+        newBookCard.appendChild(author);
+        newBookCard.appendChild(pages);
+        newBookCard.appendChild(readBtn);
+    
+        display.appendChild(newBookCard);
+    
+        return;
+    
+    }
 }
 
 const myLibrary = new Library([]);
 
+myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read"));
+myLibrary.displayBooks();
 
 // function addBookToLibrary (title, author, n_pages, read) {
 //     const newBook = new Book(title, author, n_pages, read);
@@ -36,56 +81,58 @@ const myLibrary = new Library([]);
 //     return newBook;
 // };
 
-function createCard (book, bookIndex) {
-    const display = document.querySelector(".books");
+// function createCard (book, bookIndex) {
+//     const display = document.querySelector(".books");
 
-    const newBook = document.createElement("div");
-    newBook.classList.add("book");
-    newBook.classList.add(book["read"]);
-    newBook.setAttribute("book_index", bookIndex);
+//     const newBook = document.createElement("div");
+//     newBook.classList.add("book");
+//     newBook.classList.add(book["read"]);
+//     newBook.setAttribute("book_index", bookIndex);
 
-    const deleteBtn = document.createElement("button");
-    const title = document.createElement("p");
-    const author = document.createElement("p");
-    const pages = document.createElement("p");
-    const readBtn = document.createElement("button");
+//     const deleteBtn = document.createElement("button");
+//     const title = document.createElement("p");
+//     const author = document.createElement("p");
+//     const pages = document.createElement("p");
+//     const readBtn = document.createElement("button");
 
-    deleteBtn.classList.add("deleteBtn");
-    title.classList.add("title");
-    author.classList.add("author");
-    pages.classList.add("pages");
-    readBtn.classList.add("readBtn");
+//     deleteBtn.classList.add("deleteBtn");
+//     title.classList.add("title");
+//     author.classList.add("author");
+//     pages.classList.add("pages");
+//     readBtn.classList.add("readBtn");
 
-    deleteBtn.textContent = "X";
-    title.textContent = book["title"];
-    author.textContent = book["author"];
-    pages.textContent = `${book["pages"]} pages`;
-    readBtn.textContent = book["read"];
+//     deleteBtn.textContent = "X";
+//     title.textContent = book["title"];
+//     author.textContent = book["author"];
+//     pages.textContent = `${book["pages"]} pages`;
+//     readBtn.textContent = book["read"];
 
-    addDeleteBook(deleteBtn);
-    addToggleRead(readBtn);
+//     addDeleteBook(deleteBtn);
+//     addToggleRead(readBtn);
 
-    newBook.appendChild(deleteBtn);
-    newBook.appendChild(title);
-    newBook.appendChild(author);
-    newBook.appendChild(pages);
-    newBook.appendChild(readBtn);
+//     newBook.appendChild(deleteBtn);
+//     newBook.appendChild(title);
+//     newBook.appendChild(author);
+//     newBook.appendChild(pages);
+//     newBook.appendChild(readBtn);
 
-    display.appendChild(newBook);
+//     display.appendChild(newBook);
 
-    return;
-}
+//     return;
+// }
 
-function displayBooks (library) {
-    library.forEach((book, index) => { 
-        createCard(book, index);
-    })
-}
+// function displayBooks (library) {
+//     library.forEach((book, index) => { 
+//         createCard(book, index);
+//     })
+// }
 
 
 // addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
 // addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
-displayBooks(myLibrary);
+// displayBooks(myLibrary);
+
+
 
 // Dialog and form 
 const addBookDialog = document.querySelector("dialog");
