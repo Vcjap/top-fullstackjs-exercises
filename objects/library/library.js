@@ -126,21 +126,10 @@ class Dialog {
     }
 }
 
+// Initialize library
 const myDialog = new Dialog();
 const myLibrary = new Library([]);
 
-myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read"));
+// Fill with 1 book
+myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read")); 
 myLibrary.displayBooks();
-
-// Functions handling the toggling of read/notread
-// function addToggleRead (button) {
-//     button.addEventListener("click", function(event) {
-//         const bookCard = event.target.parentElement;
-//         const bookIndex = bookCard.getAttribute("book_index");
-//         myLibrary[bookIndex].toggleRead();
-
-//         event.target.textContent = myLibrary[bookIndex].read;
-//         bookCard.classList.toggle("read");
-//         bookCard.classList.toggle("not_read");
-//     })
-// }
