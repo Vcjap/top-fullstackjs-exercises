@@ -1,4 +1,3 @@
-const myLibrary = [];
 
 class Book {
     constructor(title, author, n_pages, read) {
@@ -17,11 +16,25 @@ class Book {
     }
 }
 
-function addBookToLibrary (title, author, n_pages, read) {
-    const newBook = new Book(title, author, n_pages, read);
-    myLibrary.push(newBook);
-    return newBook;
-};
+class Library {
+    constructor(books) {
+        this.books = books;
+    }
+
+    addBookToLibrary(newBook) {
+        this.books.push(newBook);
+        return newBook;
+    }
+}
+
+const myLibrary = new Library([]);
+
+
+// function addBookToLibrary (title, author, n_pages, read) {
+//     const newBook = new Book(title, author, n_pages, read);
+//     myLibrary.push(newBook);
+//     return newBook;
+// };
 
 function createCard (book, bookIndex) {
     const display = document.querySelector(".books");
@@ -70,8 +83,8 @@ function displayBooks (library) {
 }
 
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
+// addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "198", "read");
+// addBookToLibrary("The Way of Kings", "Brandon Sanderson", "1177", "not_read");
 displayBooks(myLibrary);
 
 // Dialog and form 
@@ -95,7 +108,8 @@ addBookDataBtn.addEventListener("click", (event) => {
     const pages = document.querySelector(".formOption #pages").value;
     const read = document.querySelector(".formOption select[name='read']").value;
 
-    const newBook = addBookToLibrary(title, author, pages, read);
+    const newBook = new Book(title,author,pages,read);
+    myLibrary.addBookToLibrary(newBook);
     const lastBookIndex = myLibrary.length -1;
     createCard(newBook, lastBookIndex);
 
