@@ -61,12 +61,6 @@ class Library {
         bookInfo.forEach((info) => {
             newBookCard.appendChild(info);
         })
-
-        // newBookCard.appendChild(deleteBtn);
-        // newBookCard.appendChild(title);
-        // newBookCard.appendChild(author);
-        // newBookCard.appendChild(pages);
-        // newBookCard.appendChild(readBtn);
     
         display.appendChild(newBookCard);
     
@@ -75,24 +69,27 @@ class Library {
     }
 }
 
+class Dialog {
+    constructor() {
+        const addBookDialog = document.querySelector("dialog");
+        const addBookButton = document.querySelector("#addBookDialogBtn");
+
+        addBookButton.addEventListener("click", () => {
+            addBookDialog.showModal();
+        })
+
+        const closeBtn = document.querySelector(".closeBtn");
+        closeBtn.addEventListener("click", () => {
+            addBookDialog.close();
+        })
+    }
+}
+
+const myDialog = new Dialog();
 const myLibrary = new Library([]);
 
 myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read"));
 myLibrary.displayBooks();
-
-
-// Dialog and form 
-const addBookDialog = document.querySelector("dialog");
-
-const addBookButton = document.querySelector("#addBookDialogBtn");
-addBookButton.addEventListener("click", () => {
-    addBookDialog.showModal();
-})
-
-const closeBtn = document.querySelector(".closeBtn");
-closeBtn.addEventListener("click", () => {
-    addBookDialog.close();
-})
 
 // The submit button updates the library and the display, resets the form and closes the dialog
 const addBookDataBtn = document.querySelector("#addBookDataBtn")
