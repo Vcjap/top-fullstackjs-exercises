@@ -44,7 +44,7 @@ class Library {
         const author = document.createElement("p");
         const pages = document.createElement("p");
         const readBtn = document.createElement("button");
-        
+
         deleteBtn.classList.add("deleteBtn");
         title.classList.add("title");
         author.classList.add("author");
@@ -57,11 +57,16 @@ class Library {
         pages.textContent = `${book["pages"]} pages`;
         readBtn.textContent = book["read"];
         
-        newBookCard.appendChild(deleteBtn);
-        newBookCard.appendChild(title);
-        newBookCard.appendChild(author);
-        newBookCard.appendChild(pages);
-        newBookCard.appendChild(readBtn);
+        const bookInfo = [deleteBtn, title, author, pages, readBtn];
+        bookInfo.forEach((info) => {
+            newBookCard.appendChild(info);
+        })
+
+        // newBookCard.appendChild(deleteBtn);
+        // newBookCard.appendChild(title);
+        // newBookCard.appendChild(author);
+        // newBookCard.appendChild(pages);
+        // newBookCard.appendChild(readBtn);
     
         display.appendChild(newBookCard);
     
