@@ -31,6 +31,16 @@ class Library {
         })
     }
 
+    deleteBook(bookCard) {
+        const bookToDeleteIndex= bookCard.getAttribute("book_index");
+        myLibrary.books.splice(bookToDeleteIndex, 1);
+        
+        const cards = document.querySelector(".books");
+        cards.removeChild(bookCard);
+
+        return
+    }
+    
     createCard(book, bookIndex) {
         const display = document.querySelector(".books");
 
@@ -57,6 +67,10 @@ class Library {
         pages.textContent = `${book["pages"]} pages`;
         readBtn.textContent = book["read"];
         
+        deleteBtn.addEventListener("click", () => {
+            this.deleteBook(newBookCard);
+        })
+
         const bookInfo = [deleteBtn, title, author, pages, readBtn];
         bookInfo.forEach((info) => {
             newBookCard.appendChild(info);
@@ -110,27 +124,6 @@ const myLibrary = new Library([]);
 
 myLibrary.addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "198", "read"));
 myLibrary.displayBooks();
-
-// Functions handling book deletion
-function deleteBook(bookCard) {
-    const bookToDeleteIndex= bookCard.getAttribute("book_index");
-    myLibrary.splice(bookToDeleteIndex, 1);
-    
-    const cards = document.querySelector(".books");
-    cards.removeChild(bookCard);
-
-    return
-}
-
-function addDeleteBook (button) {
-    button.addEventListener("click", function(event) {
-        const bookCard = event.target.parentElement;
-        deleteBook(bookCard);
-    });
-};
-
-const deleteBtns = document.querySelectorAll(".deleteBtn");
-deleteBtns.forEach(button => addDeleteBook(button));
 
 // Functions handling the toggling of read/notread
 function addToggleRead (button) {
