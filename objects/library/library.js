@@ -33,7 +33,7 @@ class Library {
 
     deleteBook(bookCard) {
         const bookToDeleteIndex= bookCard.getAttribute("book_index");
-        myLibrary.books.splice(bookToDeleteIndex, 1);
+        this.books.splice(bookToDeleteIndex, 1);
         
         const cards = document.querySelector(".books");
         cards.removeChild(bookCard);
