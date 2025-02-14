@@ -10,6 +10,10 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
+  devtool: "eval-source-map",
+  devServer: {
+    watchFiles: ["./src/index.html"],
+  },
   plugins: [
     new HtmlWebpackPlugin({ //Constructor call of the htmlwebpack plugin, we pass it the template option
       template: "./src/index.html",
