@@ -8,9 +8,19 @@
 </head>
 <body>
     <div class="container">
-        <!-- Form content will go here -->
+        <form novalidate>
+            <label for="email">Email: </label>
+            <input name="email", id="email", type="email">
+            <label for="country">Country: </label>
+            <input name="country", id="country">
+            <label for="postal-code">Postal Code: </label>
+            <input name="postal-code", id="postal-code">
+            <label for="password">Password: </label>
+            <input name="password", id="password", type="password">
+            <label for="password-confirm">Confirm Password: </label>
+            <input name="password-confirm", id="password-confirm", type="password">
+        </form>
     </div>
-
     <script src="form.js" defer></script>
 </body>
 </html>
