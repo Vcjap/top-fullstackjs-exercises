@@ -25,3 +25,11 @@ form {
     margin-bottom: 5px;
     display: block;
 }
+
+input :valid {
+    border: 1px solid greenyellow;
+}
+
+input :invalid {
+    border: 1px solid red;
+}
